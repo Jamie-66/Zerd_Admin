@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>LOGIN</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="dist/css/login.css"/>
+	<link rel="stylesheet" type="text/css" href="libs/jquery-confirm/jquery-confirm.css">
+	<script type="text/javascript" src="libs/react/jquery.min.js"></script>
+	<script type="text/javascript" src="libs/jquery-confirm/jquery-confirm.js"></script>
+	<script type="text/javascript" src="libs/angular/angular.min.js"></script>
+	<script type="text/javascript" src="libs/angular/common.js"></script>
+	<script type="text/javascript" src="libs/vue.js"></script>
+
+</head>
+	<body>
+		<div class="login" id="login">
+			<h2>Zerd Form</h2>
+			<div class="login-top">
+				<h1>LOGIN FORM</h1>
+				<form>
+					<input type="text" value="User Id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
+					<input type="password" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
+			    </form>
+			    <div class="forgot">
+			    	<a href="">forgot Password</a>
+			    	<input type="submit" value="Login" @click="submit()">
+			    </div>
+			</div>
+			<div class="login-bottom">
+				<h3>If You Dont Have An Identity？Stay Here！</h3>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var login = new Vue({
+			el: "#login",
+			data: {
+
+			},
+			methods: {
+				submit: function(){
+					var _account = $('input','form').eq(0).val();
+					var _psw = $('input','form').eq(1).val();
+					$.post(common.baseUrl + 'login.php',{account: _account, password: _psw}).success(function(response){
+						console.log(response)
+						if(JSON.parse(response).state){
+							window.location.href = "backstage.html";
+						}else{
+							$.alert(JSON.parse(response).message,"登录提示")
+						}
+					})
+				}
+			}
+		})
+	</script>
+</html>

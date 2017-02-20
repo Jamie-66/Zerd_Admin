@@ -1,0 +1,9 @@
+html{ height: 100%;}
+body{ background-color: #f1f5f6;height: 100%;font-family: 'Open Sans', sans-serif;font-size: 13px;}
+*{ margin: 0;padding: 0;box-sizing: border-box;}
+img{ display: block;vertical-align: middle;}
+a{ text-decoration: none;}
+i{ text-decoration: none;}
+input{ outline: none;}
+ul,li{ list-style: none;}
+td{white-space: nowrap;}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Zerd 后台管理系统</title>
+
+	<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="libs/jquery-confirm/jquery-confirm.css">
+	<link rel="stylesheet" type="text/css" href="libs/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="dist/common/common.css">
+	<link rel="stylesheet" type="text/css" href="dist/css/backstage.css">
+	<script type="text/javascript" src="libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="libs/jquery-confirm/jquery-confirm.js"></script>
+	<script type="text/javascript" src="libs/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="libs/angular/angular.min.js"></script>
+	<script type="text/javascript" src="libs/angular/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="libs/angular/common.js"></script>
+	<script type="text/javascript" src="libs/vue.js"></script>
+	<script type="text/javascript" src="dist/common/ngPlugin_dataGrid.js"></script>
+	<script type="text/javascript" src="dist/js/backstage.js"></script>
+
+</head>
+<body ng-app="App">
+	<div class="settings-pane">
+		<a href="#" data-toggle="settings-pane" data-animate="true">
+			&times;
+		</a>
+		<div class="settings-pane-inner">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="user-info">
+						<div class="user-image">
+							<a href="">
+								<img src="dist/images/bicycle.jpg" class="img-responsive img-circle" />
+							</a>
+						</div>
+						<div class="user-details">
+							<h3>
+								<a href="" class="account"></a>
+								<span class="user-status is-online"></span>
+							</h3>
+							<p class="user-title">Admin</p>
+							<div class="user-links">
+								<a href="" class="btn btn-primary">Edit Profile</a>
+								<a ng-click="UserInfo()" href="" class="btn btn-success">Upgrade</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 link-blocks-env">
+					<div class="links-block left-sep">
+						<h4>
+							<span>Notifications</span>
+						</h4>
+						<ul class="list-unstyled">
+							<li>
+								<div class="cbr-replaced cbr-primary cbr-checked"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done" checked="checked" id="sp-chk1"></div><div class="cbr-state"><span></span></div></div>
+								<label for="sp-chk1">Messages</label>
+							</li>
+							<li>
+								<div class="cbr-replaced cbr-primary cbr-checked"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done" checked="checked" id="sp-chk1"></div><div class="cbr-state"><span></span></div></div>
+								<label for="sp-chk1">Events</label>
+							</li>
+							<li>
+								<div class="cbr-replaced cbr-primary cbr-checked"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done" checked="checked" id="sp-chk1"></div><div class="cbr-state"><span></span></div></div>
+								<label for="sp-chk1">Updates</label>
+							</li>
+							<li>
+								<div class="cbr-replaced cbr-primary cbr-checked"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done" checked="checked" id="sp-chk1"></div><div class="cbr-state"><span></span></div></div>
+								<label for="sp-chk1">Server Uptime</label>
+							</li>
+						</ul>
+					</div>
+					<div class="links-block left-sep">
+						<h4>
+							<a href="">
+								<span>Help Desk</span>
+							</a>
+						</h4>
+						<ul class="list-unstyled">
+							<li>
+								<a href="">
+									<i class="fa-angle-right"></i>
+									Support Center
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<i class="fa-angle-right"></i>
+									Submit a Ticket
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<i class="fa-angle-right"></i>
+									Domains Protocol
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<i class="fa-angle-right"></i>
+									Terms of Service
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="templatemo-flex-row">
+		<div class="templatemo-sidebar" ng-controller="Controller">
+			<header class="templatemo-site-header">
+	          	<div class="square"></div>
+	          	<h1>Zerd Admin</h1>
+	          	<span><i class="fa fa-gear"></i></span>
+	        </header>
+	        <div class="profile-photo-container">
+	         	<img src="dist/images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">  
+	          	<div class="profile-photo-overlay"></div>
+	        </div>
+	        <!-- Search box -->
+	        <form class="templatemo-search-form" role="search">
+	          	<div class="input-group">
+	              	<button type="submit" class="fa fa-search"></button>
+	              	<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">           
+	          	</div>
+	        </form>
+	        <nav class="templatemo-left-nav">          
+	          	<ul>
+	            	<li><a href="backstage.html" class="active"><i class="fa fa-home fa-fw"></i>Home</a></li>
+	            	<li><a ng-click="UserInfo()" href=""><i class="fa fa-file-text-o fa-fw"></i>Modify</a></li>
+	            	<li><a ng-click="Accounts()" href=""><i class="fa fa-users fa-fw"></i>Accounts</a></li>
+	            	<li><a ng-click="Orders()" href=""><i class="fa fa-trophy fa-fw"></i>Orders</a></li>
+	            	<li><a ng-click="Products()" href=""><i class="fa fa-database fa-fw"></i>Products</a></li>
+	            	<li><a ng-click="Cart()" href=""><i class="fa fa-shopping-cart fa-fw"></i>Cart</a></li>
+	            	<li><a ng-click="Address()" href=""><i class="fa fa-map-marker fa-fw"></i>Address</a></li>
+	            	<li><a ng-click="loginOut()" href=""><i class="fa fa-eject fa-fw"></i>Sign Out</a></li>
+	          	</ul>  
+	        </nav>
+		</div>
+		<!-- Main content --> 
+      	<div class="templatemo-content col-1 light-gray-bg">
+      	 	<div class="templatemo-top-nav-container">
+      	 	  	<div class="row">
+      	 	   		<nav class="templatemo-top-nav col-lg-12 col-md-12">
+      	 	   		  	<ul class="text-uppercase">
+      	 	   		  	 	<li><a href="" class="active">Admin panel</a></li>
+      	 	   		  	 	<li><a href="">Dashboard</a></li>
+      	 	   		  	 	<li><a href="">Overview</a></li>
+      	 	   		  	 	<li><a href="login.html">Sign in form</a></li>
+      	 	   		  	</ul>  
+      	 	   		</nav> 
+      	 	  	</div>
+      	 	</div>
+      	 	<div class="templatemo-content-container">
+      	 		<div class="templatemo-flex-row flex-content-row">
+		            <div class="templatemo-content-widget white-bg col-1">
+		              <i class="fa fa-times"></i>
+		              <div class="media margin-bottom-30">
+		                <div class="media-left padding-right-25">
+		                  <a href="#">
+		                    <img class="media-object img-circle templatemo-img-bordered" src="dist/images/person.jpg" alt="Sunset">
+		                  </a>
+		                </div>
+		                <div class="media-body">
+		                  <h2 class="media-heading blue-text">John Barnet</h2>
+		                  <p>Project Manager</p>
+		                </div>        
+		              </div>
+		              <div class="table-responsive">
+		                <table class="table">
+		                  <tbody>
+		                    <tr>
+		                      <td><div class="circle green-bg"></div></td>
+		                      <td>New Task Issued</td>
+		                      <td>02</td>                    
+		                    </tr> 
+		                    <tr>
+		                      <td><div class="circle pink-bg"></div></td>
+		                      <td>Task Pending</td>
+		                      <td>22</td>                    
+		                    </tr>  
+		                    <tr>
+		                      <td><div class="circle blue-bg"></div></td>
+		                      <td>Inbox</td>
+		                      <td>13</td>                    
+		                    </tr>  
+		                    <tr>
+		                      <td><div class="circle yellow-bg"></div></td>
+		                      <td>New Notification</td>
+		                      <td>18</td>                    
+		                    </tr>                                      
+		                  </tbody>
+		                </table>
+		              </div>             
+		            </div>
+		            <div class="col-1">              
+		              <div class="templatemo-content-widget pink-bg">
+		                <i class="fa fa-times"></i>                
+		                <h2 class="margin-bottom-10">Latest Data</h2>
+		                <p class="margin-bottom-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mi sapien, fringilla at orci nec, viverra rhoncus leo.</p>                  
+		              </div>            
+		              <div class="templatemo-content-widget blue-bg">
+		                <i class="fa fa-times"></i>
+		                <h2 class="margin-bottom-10">Older Data</h2>
+		                <p class="margin-bottom-0">Phasellus dapibus nulla quis risus auctor, non placerat augue consectetur. Aliquam convallis pharetra odio, in convallis erat molestie sed.</p>                
+		              </div>            
+		            </div>
+		          </div>       
+      	 	</div>
+      	</div>
+	</div>
+	<!--遮罩层-->
+	<div class="mask item-hidden">
+		<div>
+			<i class="fa fa-spinner fa-pulse"></i>
+			<p>加载中</p>
+		</div>
+	</div>
+</body>
+</html>
